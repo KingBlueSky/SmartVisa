@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.smart.visa.app.dao.AreasDao">
+
+    <resultMap id="BaseResultMap" type="com.smart.visa.api.entity.AreasEntity">
+        <result column="id" property="id" jdbcType="BIGINT"/>
+            <result column="area_id" property="areaId" jdbcType="INTEGER"/>
+            <result column="name" property="name" jdbcType="VARCHAR"/>
+            <result column="code" property="code" jdbcType="VARCHAR"/>
+            <result column="level" property="level" jdbcType="INTEGER"/>
+            <result column="father_id" property="fatherId" jdbcType="INTEGER"/>
+            <result column="area_code" property="areaCode" jdbcType="VARCHAR"/>
+            <result column="create_at" property="createAt" jdbcType="TIMESTAMP"/>
+            <result column="create_by" property="createBy" jdbcType="BIGINT"/>
+            <result column="create_name" property="createName" jdbcType="VARCHAR"/>
+            <result column="update_at" property="updateAt" jdbcType="TIMESTAMP"/>
+            <result column="update_by" property="updateBy" jdbcType="BIGINT"/>
+            <result column="update_name" property="updateName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 基础列 -->
+    <sql id="_base_column">
+         id, area_id, name, code, level, father_id, area_code, create_at, create_by, create_name, update_at, update_by, update_name
+    </sql>
+
+    <!-- 保存 -->
+    <insert id="save" parameterType="com.smart.visa.api.entity.AreasEntity" useGeneratedKeys="true" keyProperty="${pk.fieldName}" >
+
+        insert into areas
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="id != null">
+                id,
+            </if>
+           <if test="areaId != null">
+                area_id,
+            </if>
+           <if test="name != null">
+                name,
+            </if>
+           <if test="code != null">
+                code,
+            </if>
+           <if test="level != null">
+                level,
+            </if>
+           <if test="fatherId != null">
+                father_id,
+            </if>
+           <if test="areaCode != null">
+                area_code,
+            </if>
+           <if test="createAt != null">
+                create_at,
+            </if>
+           <if test="createBy != null">
+                create_by,
+            </if>
+           <if test="createName != null">
+                create_name,
+            </if>
+           <if test="updateAt != null">
+                update_at,
+            </if>
+           <if test="updateBy != null">
+                update_by,
+            </if>
+           <if test="updateName != null">
+                update_name,
+            </if>
+    
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <if test="id != null">
+                #{id},
+            </if>
+            <if test="areaId != null">
+                #{areaId},
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="code != null">
+                #{code},
+            </if>
+            <if test="level != null">
+                #{level},
+            </if>
+            <if test="fatherId != null">
+                #{fatherId},
+            </if>
+            <if test="areaCode != null">
+                #{areaCode},
+            </if>
+            <if test="createAt != null">
+                #{createAt},
+            </if>
+            <if test="createBy != null">
+                #{createBy},
+            </if>
+            <if test="createName != null">
+                #{createName},
+            </if>
+            <if test="updateAt != null">
+                #{updateAt},
+            </if>
+            <if test="updateBy != null">
+                #{updateBy},
+            </if>
+            <if test="updateName != null">
+                #{updateName},
+            </if>
+        </trim>
+
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="com.smart.visa.api.entity.AreasEntity">
+
+        update areas
+        <set>
+        <if test="id != null">
+                id = #{id, jdbcType=BIGINT},
+            </if>
+            <if test="areaId != null">
+                area_id = #{areaId, jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name, jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                code = #{code, jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                level = #{level, jdbcType=INTEGER},
+            </if>
+            <if test="fatherId != null">
+                father_id = #{fatherId, jdbcType=INTEGER},
+            </if>
+            <if test="areaCode != null">
+                area_code = #{areaCode, jdbcType=VARCHAR},
+            </if>
+            <if test="createAt != null">
+                create_at = #{createAt, jdbcType=TIMESTAMP},
+            </if>
+            <if test="createBy != null">
+                create_by = #{createBy, jdbcType=BIGINT},
+            </if>
+            <if test="createName != null">
+                create_name = #{createName, jdbcType=VARCHAR},
+            </if>
+            <if test="updateAt != null">
+                update_at = #{updateAt, jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null">
+                update_by = #{updateBy, jdbcType=BIGINT},
+            </if>
+            <if test="updateName != null">
+                update_name = #{updateName, jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ${pk.column.columnName} = #{${pk.fieldName}, jdbcType=${pk.column.jdbcTypeName}}
+    </update>
+
+    <!-- 按条件查找 -->
+    <select id="findByParam" resultMap="BaseResultMap" parameterType="com.smart.visa.api.entity.AreasEntity">
+        select
+            <include refid="_base_column"/>
+        from areas
+    </select>
+
+
+</mapper>

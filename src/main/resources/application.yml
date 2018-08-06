@@ -1,0 +1,30 @@
+spring:
+  # 项目名称
+  application:
+    name: smart-visa
+   # 数据库配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.111.131:3306/smart_visa?useUnicode=true&characterEncoding=utf-8&&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+
+# 服务端口
+server:
+  port: 8080
+
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.smart.visa.api.entity
+
+# sql打印，调试用
+logging:
+  level:
+    com.smart.visa.app.dao: debug
+    mapper: debug
