@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Description: API响应内容
@@ -34,5 +36,26 @@ public class ApiResponse<T> implements Serializable {
      * 数据内容
      */
     private T data;
+
+
+    public Map<String,Object> status = new HashMap<String,Object>();
+
+    private Map<String,Object> response = new HashMap<String,Object>();
+
+    public Map<String, Object> getStatus() {
+        return status;
+    }
+
+    public void setStatus(Map<String, Object> status) {
+        this.status = status;
+    }
+
+    public Map<String, Object> getResponse() {
+        return response;
+    }
+
+    public void setResponse(Map<String, Object> response) {
+        this.response = response;
+    }
 
 }
