@@ -1,7 +1,5 @@
 package com.smart.visa.app.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.smart.visa.common.api.ApiResponse;
 import com.smart.visa.common.exception.BaseException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +23,7 @@ public class TestController {
 
     @GetMapping("say")
     public String say(String name) {
+
         return "say: " + name;
     }
 
