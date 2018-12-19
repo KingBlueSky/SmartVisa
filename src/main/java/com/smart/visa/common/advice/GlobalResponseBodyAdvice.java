@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 @RestControllerAdvice
 public class GlobalResponseBodyAdvice implements ResponseBodyAdvice<Object> {
 
-    private final static ThreadLocal<Boolean> useWrapper = new ThreadLocal<Boolean>();
+    private final static ThreadLocal<Boolean> useWrapper = new ThreadLocal<>();
 
     @Override
     public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> converterType) {
